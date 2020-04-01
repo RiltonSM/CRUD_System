@@ -30,10 +30,10 @@ module.exports = {
         return response.send('Atualizado');
     },
     async delete(request, response) {
-        const { cpf } = request.body;
+        const { id } = request.params;
 
-        await connection('usuarios').where('cpf', cpf).delete();
+        await connection('usuarios').where("id", id).delete();
 
-        return response.send('Removido');
+        return response.status(204).send();
     }
 }
